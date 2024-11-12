@@ -1,4 +1,4 @@
-package com.huyta55.spotiquiz.service;
+package com.huyta55.spotiquiz.orchestration.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.huyta55.spotiquiz.entity.Player;
-import com.huyta55.spotiquiz.repository.PlayerRepository;
+import com.huyta55.spotiquiz.jpa.entity.Player;
+import com.huyta55.spotiquiz.jpa.entity.repository.PlayerRepository;
 
 
 @Service
@@ -25,7 +25,7 @@ public class PlayerService {
     }
 
     @Transactional
-    public Player save(Player newPlayer) {
+    public Player createPlayer(Player newPlayer) {
         return playerRepo.save(newPlayer);
     }
 

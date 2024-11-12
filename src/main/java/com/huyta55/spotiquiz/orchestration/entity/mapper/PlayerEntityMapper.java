@@ -2,7 +2,7 @@ package com.huyta55.spotiquiz.orchestration.entity.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.huyta55.spotiquiz.entity.Player;
+import com.huyta55.spotiquiz.jpa.entity.Player;
 import com.huyta55.generic.entity.PlayerImport;
 
 @Component

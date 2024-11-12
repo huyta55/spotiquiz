@@ -1,7 +1,10 @@
-package com.huyta55.spotiquiz.entity;
+package com.huyta55.spotiquiz.jpa.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+
+@Data
 @Entity
 @Table(name="player")
 public class Player {
@@ -35,54 +38,6 @@ public class Player {
         this.score = score;
         this.highScore = highScore;
         this.userPassword = passwd;
-        this.dmIndicator = dmIndicator;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    public Integer getHighScore() {
-        return highScore;
-    }
-
-    public void setHighScore(Integer highScore) {
-        this.highScore = highScore;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public Boolean getDmIndicator() {
-        return dmIndicator;
-    }
-
-    public void setDmIndicator(Boolean dmIndicator) {
         this.dmIndicator = dmIndicator;
     }
 

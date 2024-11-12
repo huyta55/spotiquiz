@@ -1,9 +1,9 @@
-package com.huyta55.spotiquiz.rest;
+package com.huyta55.spotiquiz.orchestration.controller;
 
 import java.util.List;
 
-import com.huyta55.spotiquiz.entity.Player;
-import com.huyta55.spotiquiz.service.PlayerService;
+import com.huyta55.spotiquiz.jpa.entity.Player;
+import com.huyta55.spotiquiz.orchestration.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -12,29 +12,22 @@ import org.springframework.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 @RestController
-@RequestMapping("api/")
-public class SpotiquizController {
+@RequestMapping("spotiquiz/player/")
+public class PlayerController {
 
-    private static final Logger logger = LoggerFactory.getLogger(SpotiquizController.class);
+    private static final Logger logger = LoggerFactory.getLogger(PlayerController.class);
 
     @Autowired
     private PlayerService playerService;
 
-    @Autowired
-    public SpotiquizController(PlayerService thePlayerService) {
-        playerService = thePlayerService;
-    }
-
-
-    @GetMapping("/players/")
+    @GetMapping("get/")
     public List<Player> findAll() {
         return playerService.findAll();
     }
 
 
-    @GetMapping("/players/{userName}/")
+    @GetMapping("{userName}/")
     public ResponseEntity<Player> findPlayer(@PathVariable String userName) {
         logger.info("Finding player with the provided username...");
         try {
@@ -53,19 +46,17 @@ public class SpotiquizController {
     }
 
 
-    @PostMapping("/players/newplayer/")
+    @PostMapping("newplayer/")
     public void addPlayer(@RequestBody Player newPlayer) {
         logger.info("Creating new player...");
-        playerService.save(newPlayer);
+        playerService.createPlayer(newPlayer);
     }
 
 
-    @DeleteMapping("/players/rm/")
+    @DeleteMapping("rm/")
     public ResponseEntity<Void> deletePlayer(@RequestBody Player player) {
         logger.info("Attempting to delete provided user...");
         playerService.deletePlayerByUser(player.getUsername());
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 }
